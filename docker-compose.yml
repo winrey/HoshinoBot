@@ -24,7 +24,7 @@ services:
       - CQHTTP_SERVE_DATA_FILES=no
       - CQHTTP_USE_HTTP=no
       - CQHTTP_USE_WS_REVERSE=yes
-      - CQHTTP_WS_REVERSE_API_URL=ws://bot:8080/ws/
+      - CQHTTP_WS_REVERSE_URL=ws://bot:8080/ws/
       - CQHTTP_WS_REVERSE_USE_UNIVERSAL_CLIENT=yes
     volumes:
       - ./cqhttp:/home/user/coolq

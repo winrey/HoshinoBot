@@ -1,0 +1,39 @@
+version: '3'
+services:
+  bot:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file: .env
+    restart: on-failure
+    volumes:
+      - .:/code
+#      - ./.hoshino:/root/.hoshino
+    networks:
+      - bot_net
+
+  cqhttp:
+    image: richardchien/cqhttp:latest
+#    image: richardchien/cqhttp:4.5.0
+    env_file: .env
+    restart: on-failure
+    environment:
+      - VNC_PASSWD=${VNC_PWD}
+      - COOLQ_ACCOUNT=${QQ_ACCOUNT} # 要登录的 QQ 账号，可选但建议填
+      - COOLQ_URL=${COOLQ_VERSION_URL}
+      - CQHTTP_SERVE_DATA_FILES=no
+      - CQHTTP_USE_HTTP=no
+      - CQHTTP_USE_WS_REVERSE=yes
+      - CQHTTP_WS_REVERSE_API_URL=ws://bot:8080/ws/
+      - CQHTTP_WS_REVERSE_USE_UNIVERSAL_CLIENT=yes
+    volumes:
+      - ./cqhttp:/home/user/coolq
+    ports:
+      - "9000:9000" # VNC端口
+#      - "5700:5700" # HTTP API 插件开放的端口
+    networks:
+      - bot_net
+
+networks:
+    bot_net:
+        driver: bridge

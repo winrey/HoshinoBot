@@ -15,6 +15,7 @@ NICKNAME = ''           # 机器人的昵称。呼叫昵称等同于@bot，可�
 PORT = 8080
 HOST = '127.0.0.1'      # Windows本地部署使用此条配置
 # HOST = '172.17.0.1'   # docker使用此条配置
+# HOST = '0.0.0.0'      # docker-compose使用此条配置
 # HOST = '172.18.0.1'   # 阿里云服务器的docker使用此条配置
 
 IS_CQPRO = False        # 是否使用Pro版酷Q功能

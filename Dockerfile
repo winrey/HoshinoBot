@@ -1,0 +1,27 @@
+FROM python:3.8
+LABEL author="winrey"
+
+#print()时在控制台正常显示中文
+ENV PYTHONIOENCODING=utf-8
+
+# 设置系统时间与时区
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo 'Asia/Shanghai' >/etc/timezone
+
+# 安装需要的python库
+ADD requirements.txt /build/requirements.txt
+
+RUN pip install -i https://mirrors.aliyun.com/pypi/simple/ -r /build/requirements.txt \
+    && rm /build/requirements.txt
+
+# 代码复制过来后的路径
+RUN mkdir /code
+
+# 添加环境变量
+#RUN export PYTHONPATH=$PYTHONPATH:/code
+
+ADD . /code
+
+WORKDIR /code
+
+CMD ["python3", "run.py"]

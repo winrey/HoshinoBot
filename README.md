@@ -134,6 +134,8 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
 
 由于 酷Q 仅支持 Windows 环境，我们需要使用 docker 镜像来部署 酷Q 及 CQHTTP 插件。但别担心，相信我，这比 Windows 下部署更简单！您可以在[这个文档](https://cqhttp.cc/docs/#/Docker)找到详细的说明。下面将带领您进行部署：
 
+（您同样可以选择[docker-compose一键部署](#docker-compose部署)）
+
 1. 安装 docker：参考https://docs.docker.com/engine/install/debian/
 
 2. 部署 docker：下面一条命令仅供参考，请根据实际情况修改参数
@@ -189,7 +191,16 @@ HoshinoBot 的功能繁多，各群可根据自己的需要进行开关控制，
     
     注意，此时您的机器人功能还不完全，部分功能可能无法正常工作。若希望您的机器人可以发送图片，或使用其他进阶功能，请参考本章**更进一步**的对应小节。
 
-
+#### docker-compose部署
+1. clone项目
+```bash
+git clone https://github.com/Ice-Cirno/HoshinoBot.git
+cd HoshinoBot
+```
+2. 如果您没有安装docker和docker-compose，可以使用我们一键安装换源脚本：
+```bash
+sudo bash scripts/install-docker.sh
+```
 
 ### 更进一步
 
